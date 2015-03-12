@@ -17,9 +17,6 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
  * }}}
  */
-/**
- * PDF加密工具类，具有四个属性，用户密码，拥有者密码，PDF操作权限，加密类型
- */
 package org.xhtmlrenderer.pdf;
 
 import com.itextpdf.text.pdf.PdfWriter;

@@ -19,13 +19,6 @@
  */
 package eeze;
 
-import org.xhtmlrenderer.simple.FSScrollPane;
-import org.xhtmlrenderer.simple.Graphics2DRenderer;
-import org.xhtmlrenderer.simple.XHTMLPanel;
-import org.xhtmlrenderer.util.XRLog;
-
-import javax.imageio.ImageIO;
-import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.awt.image.BufferedImage;
@@ -36,6 +29,13 @@ import java.net.URL;
 import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
+import javax.imageio.ImageIO;
+import javax.swing.*;
+
+import org.xhtmlrenderer.simple.FSScrollPane;
+import org.xhtmlrenderer.simple.Graphics2DRenderer;
+import org.xhtmlrenderer.simple.XHTMLPanel;
+import org.xhtmlrenderer.util.XRLog;
 
 
 /**
@@ -70,9 +70,7 @@ public class Eeze {
      * Description of the Field
      */
     Action nextDemoAction;
-    /**
-     * Description of the Field
-     */
+
     Action chooseDemoAction;
 
     /**
@@ -153,10 +151,6 @@ public class Eeze {
         }
     }
 
-    /**
-     * 处理启动参数，如果参数不是目录，就返回错误信息并退出。
-     * @param args
-     */
     private void parseArgs(String[] args) {
         File f = null;
 

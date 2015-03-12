@@ -20,14 +20,14 @@
  */
 package org.xhtmlrenderer.render;
 
+import java.awt.Rectangle;
+
 import org.w3c.dom.Text;
 import org.xhtmlrenderer.extend.FSGlyphVector;
 import org.xhtmlrenderer.layout.FunctionData;
 import org.xhtmlrenderer.layout.LayoutContext;
 import org.xhtmlrenderer.layout.WhitespaceStripper;
-import org.xhtmlrenderer.util.UPrint;
-
-import java.awt.*;
+import org.xhtmlrenderer.util.Uu;
 
 /**
  * A lightweight object which contains a chunk of text from an inline element.  
@@ -87,7 +87,7 @@ public class InlineText {
     
     public void setSubstring(int start, int end) {
         if (end < start) {
-            UPrint.p("setting substring to: " + start + " " + end);
+            Uu.p("setting substring to: " + start + " " + end);
             throw new RuntimeException("set substring length too long: " + this);
         } else if (end < 0 || start < 0) {
             throw new RuntimeException("Trying to set negative index to inline box");

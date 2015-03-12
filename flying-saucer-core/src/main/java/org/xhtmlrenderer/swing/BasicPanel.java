@@ -19,6 +19,27 @@
  */
 package org.xhtmlrenderer.swing;
 
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.Insets;
+import java.awt.LayoutManager;
+import java.awt.Point;
+import java.awt.Rectangle;
+import java.awt.Shape;
+import java.awt.print.PrinterGraphics;
+import java.io.BufferedReader;
+import java.io.InputStream;
+import java.io.StringReader;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.Iterator;
+import java.util.List;
+import java.util.logging.Level;
+
+import javax.swing.JOptionPane;
+
 import org.w3c.dom.Document;
 import org.xhtmlrenderer.css.style.CalculatedStyle;
 import org.xhtmlrenderer.css.style.derived.RectPropertySet;
@@ -34,21 +55,9 @@ import org.xhtmlrenderer.resource.XMLResource;
 import org.xhtmlrenderer.simple.NoNamespaceHandler;
 import org.xhtmlrenderer.simple.extend.FormSubmissionListener;
 import org.xhtmlrenderer.util.Configuration;
-import org.xhtmlrenderer.util.UPrint;
+import org.xhtmlrenderer.util.Uu;
 import org.xhtmlrenderer.util.XRLog;
 import org.xml.sax.InputSource;
-
-import javax.swing.*;
-import java.awt.*;
-import java.awt.print.PrinterGraphics;
-import java.io.BufferedReader;
-import java.io.InputStream;
-import java.io.StringReader;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.util.Iterator;
-import java.util.List;
-import java.util.logging.Level;
 
 
 
@@ -164,7 +173,7 @@ public abstract class BasicPanel extends RootPanel implements FormSubmissionList
             }
             long after = System.currentTimeMillis();
             if (Configuration.isTrue("xr.incremental.repaint.print-timing", false)) {
-                UPrint.p("repaint took ms: " + (after - start));
+                Uu.p("repaint took ms: " + (after - start));
             }
         } catch (ThreadDeath t) {
             throw t;
@@ -433,6 +442,7 @@ public abstract class BasicPanel extends RootPanel implements FormSubmissionList
             XRLog.render("Reload called on BasicPanel, but there is no document set on the panel yet.");
             return;
         }
+        ;
         this.doc = doc;
         setDocument(this.doc, getSharedContext().getBaseURL(), getSharedContext().getNamespaceHandler());
     }

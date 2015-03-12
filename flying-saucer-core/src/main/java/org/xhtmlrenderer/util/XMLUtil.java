@@ -20,16 +20,17 @@
  */
 package org.xhtmlrenderer.util;
 
-import org.w3c.dom.Document;
-import org.xml.sax.InputSource;
+import java.io.File;
+import java.io.StringReader;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
-import java.io.File;
-import java.io.StringReader;
 
-/**XML生成工具:创建document 将XML转换为document
+import org.w3c.dom.Document;
+import org.xml.sax.InputSource;
+
+/**
  * Booch utility class for XML processing using DOM
  */
 public class XMLUtil {

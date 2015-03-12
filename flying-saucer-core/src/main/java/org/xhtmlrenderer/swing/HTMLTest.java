@@ -19,12 +19,13 @@
  */
 package org.xhtmlrenderer.swing;
 
+import org.xhtmlrenderer.extend.TextRenderer;
 import org.xhtmlrenderer.simple.XHTMLPanel;
-import org.xhtmlrenderer.util.UPrint;
+import org.xhtmlrenderer.util.Uu;
 import org.xhtmlrenderer.util.XRLog;
 
 import javax.swing.*;
-import java.awt.*;
+import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 import java.io.File;
@@ -163,7 +164,7 @@ public class HTMLTest extends JFrame {
                             panel.getDocumentTitle() + "  " +
                             "(" + url.toString() + ")");
                 } catch (Exception ex) {
-                    UPrint.p(ex);
+                    Uu.p(ex);
                 }
                 panel.repaint();
             }

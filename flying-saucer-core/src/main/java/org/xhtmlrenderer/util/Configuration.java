@@ -23,24 +23,13 @@ package org.xhtmlrenderer.util;
 import org.xhtmlrenderer.DefaultCSSMarker;
 
 import java.io.*;
-import java.lang.reflect.Field;
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.util.*;
 import java.util.logging.Level;
 import java.util.logging.LogRecord;
 import java.util.logging.Logger;
-
-/**
- * Configuration类
- * <p>设置运行时应用必须的参数信息。不必重新启动。</p>
- * <p>该类除了静态方法是单例模式。valueFor（String key）方法可以用来冲提取单例中查找相应的键值信息。 </p>
- * <p>Properties使用的配置文件可以被覆写${user.home}/.flyingsaucer/local.xhtmlrenderer.conf。</p>
- * <p>默认位置在：resources/conf/xhtmlrenderer.conf。你也可以通过命令行工具指定自己的配置文件位置。</p>
- * <p>java -Dxr.property-name=new_value。</p>
- * <p>默认值都是字符串类型，这里也提供一些转换方法将String类型转换为Integer类型等， </p>
- * <p>如果转换失败或者值不存在，则警告信息被写入日志文件中。</p>
- */
+import java.lang.reflect.Field;
+import java.net.URL;
+import java.net.MalformedURLException;
 
 
 /**

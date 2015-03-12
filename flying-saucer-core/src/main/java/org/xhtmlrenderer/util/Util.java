@@ -20,19 +20,19 @@
 package org.xhtmlrenderer.util;
 
 import javax.swing.*;
-import java.awt.*;
+import java.awt.Dimension;
+import java.awt.Toolkit;
 import java.io.*;
 import java.text.DateFormat;
 import java.util.*;
-import java.util.List;
 
 
 /**
- * 打印工具类
+ * Description of the Class
  *
  * @author empty
  */
-public class PrintUtil {
+public class Util {
     /**
      * Description of the Field
      */
@@ -47,7 +47,7 @@ public class PrintUtil {
      *
      * @param writer PARAM
      */
-    public PrintUtil(PrintWriter writer) {
+    public Util(PrintWriter writer) {
         this.pw = writer;
     }
 
@@ -56,7 +56,7 @@ public class PrintUtil {
      *
      * @param out PARAM
      */
-    public PrintUtil(OutputStream out) {
+    public Util(OutputStream out) {
         this.pw = new PrintWriter(out);
     }
 
@@ -312,7 +312,7 @@ public class PrintUtil {
      * @throws IOException           Throws
      */
     public static String file_to_string(String filename)
-            throws IOException {
+            throws FileNotFoundException, IOException {
         File file = new File(filename);
         return file_to_string(file);
     }
@@ -543,7 +543,7 @@ public class PrintUtil {
         try {
             Thread.sleep(msec);
         } catch (InterruptedException ex) {
-            UPrint.p(stack_to_string(ex));
+            org.xhtmlrenderer.util.Uu.p(stack_to_string(ex));
         }
     }
 

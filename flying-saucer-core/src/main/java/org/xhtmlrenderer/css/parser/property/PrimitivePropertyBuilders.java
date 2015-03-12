@@ -19,17 +19,21 @@
  */
 package org.xhtmlrenderer.css.parser.property;
 
+import java.util.ArrayList;
+import java.util.BitSet;
+import java.util.Collections;
+import java.util.Iterator;
+import java.util.List;
+
 import org.w3c.dom.css.CSSPrimitiveValue;
 import org.xhtmlrenderer.css.constants.CSSName;
 import org.xhtmlrenderer.css.constants.IdentValue;
-import org.xhtmlrenderer.css.parser.*;
+import org.xhtmlrenderer.css.parser.CSSParseException;
+import org.xhtmlrenderer.css.parser.FSFunction;
+import org.xhtmlrenderer.css.parser.FSRGBColor;
+import org.xhtmlrenderer.css.parser.PropertyValue;
+import org.xhtmlrenderer.css.parser.Token;
 import org.xhtmlrenderer.css.sheet.PropertyDeclaration;
-
-import java.util.*;
-
-/**
- * Css属性构造器
- */
 
 public class PrimitivePropertyBuilders {
     // none | hidden | dotted | dashed | solid | double | groove | ridge | inset | outset

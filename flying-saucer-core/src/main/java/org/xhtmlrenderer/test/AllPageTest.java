@@ -1,7 +1,7 @@
 package org.xhtmlrenderer.test;
 
 import org.xhtmlrenderer.simple.Graphics2DRenderer;
-import org.xhtmlrenderer.util.UPrint;
+import org.xhtmlrenderer.util.Uu;
 
 import java.io.File;
 import java.io.FilenameFilter;
@@ -45,7 +45,7 @@ public class AllPageTest {
             Graphics2DRenderer.renderToImage(page, 700, 700);
             Date end = new Date();
             long diff = (end.getTime() - start.getTime());
-            UPrint.p("ms = " + diff);
+            Uu.p("ms = " + diff);
             if (i > 4) total += diff;
         }
         long avg = total / cnt;

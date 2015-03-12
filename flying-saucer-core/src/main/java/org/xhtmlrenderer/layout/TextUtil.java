@@ -22,7 +22,7 @@ package org.xhtmlrenderer.layout;
 import org.xhtmlrenderer.css.constants.CSSName;
 import org.xhtmlrenderer.css.constants.IdentValue;
 import org.xhtmlrenderer.css.style.CalculatedStyle;
-import org.xhtmlrenderer.util.UPrint;
+import org.xhtmlrenderer.util.Uu;
 
 
 /**
@@ -163,7 +163,7 @@ public class TextUtil {
 
         //Uu.p("final = -"+sb.toString()+"-");
         if ( sb.toString().length() != text.length() ) {
-            UPrint.p("error! to strings arent the same length = -" + sb.toString() + "-" + text + "-");
+            Uu.p( "error! to strings arent the same length = -" + sb.toString() + "-" + text + "-" );
         }
         return sb.toString();
     }

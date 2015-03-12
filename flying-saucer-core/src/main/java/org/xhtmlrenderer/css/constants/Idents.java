@@ -30,8 +30,6 @@ import java.util.regex.Pattern;
 
 
 /**
- * 面向对象的CSS 2.1属性值工具类 ，定义一系列存储属性值得容器
- *
  * Booch utility class for working with ident values in CSS.
  *
  * @author Patrick Wright

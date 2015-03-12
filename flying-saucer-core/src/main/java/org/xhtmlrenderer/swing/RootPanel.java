@@ -19,6 +19,27 @@
  */
 package org.xhtmlrenderer.swing;
 
+import java.awt.Color;
+import java.awt.Container;
+import java.awt.Dimension;
+import java.awt.EventQueue;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.Insets;
+import java.awt.Rectangle;
+import java.awt.event.ComponentEvent;
+import java.awt.event.ComponentListener;
+import java.awt.event.MouseEvent;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.logging.Level;
+
+import javax.swing.CellRendererPane;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JViewport;
+
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.css.CSSPrimitiveValue;
@@ -38,25 +59,16 @@ import org.xhtmlrenderer.layout.BoxBuilder;
 import org.xhtmlrenderer.layout.Layer;
 import org.xhtmlrenderer.layout.LayoutContext;
 import org.xhtmlrenderer.layout.SharedContext;
-import org.xhtmlrenderer.render.*;
+import org.xhtmlrenderer.render.BlockBox;
 import org.xhtmlrenderer.render.Box;
+import org.xhtmlrenderer.render.PageBox;
+import org.xhtmlrenderer.render.RenderingContext;
+import org.xhtmlrenderer.render.ViewportBox;
 import org.xhtmlrenderer.util.Configuration;
-import org.xhtmlrenderer.util.UPrint;
+import org.xhtmlrenderer.util.Uu;
 import org.xhtmlrenderer.util.XRLog;
 
-import javax.swing.*;
-import java.awt.*;
-import java.awt.event.ComponentEvent;
-import java.awt.event.ComponentListener;
-import java.awt.event.MouseEvent;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.logging.Level;
 
-/**
- *
- */
 public class RootPanel extends JPanel implements ComponentListener, UserInterface, FSCanvas, RepaintListener {
     static final long serialVersionUID = 1L;
 
@@ -149,7 +161,7 @@ public class RootPanel extends JPanel implements ComponentListener, UserInterfac
         enclosingScrollPane = scrollPane;
 
         if (enclosingScrollPane != null) {
-            UPrint.p("added root panel as a component listener to the scroll pane");
+            Uu.p("added root panel as a component listener to the scroll pane");
             enclosingScrollPane.addComponentListener(this);
             default_scroll_mode = enclosingScrollPane.getViewport().getScrollMode();
         }
@@ -518,8 +530,8 @@ public class RootPanel extends JPanel implements ComponentListener, UserInterfac
     }
 
     public void componentResized(ComponentEvent e) {
-        UPrint.p("componentResized() " + this.getSize());
-        UPrint.p("viewport = " + enclosingScrollPane.getViewport().getSize());
+        Uu.p("componentResized() " + this.getSize());
+        Uu.p("viewport = " + enclosingScrollPane.getViewport().getSize());
         if (! getSharedContext().isPrint() && isExtentsHaveChanged()) {
             relayout();
         }

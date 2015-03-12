@@ -19,11 +19,11 @@
  */
 package org.xhtmlrenderer.util;
 
-import java.util.HashMap;
 import java.util.Map;
+import java.util.HashMap;
 
 
-/**  定义图片压缩的质量
+/**
  * Simple enumerated constants for downscaling (scaling to smaller image size)--since we have various options
  * for what algorithm to use. Not general-purpose, applies only to methods used in ImageUtil. Types constants
  * can be looked up using {@link #forString(String, DownscaleQuality)} and the corresponding string
@@ -86,8 +86,8 @@ public class DownscaleQuality {
 	 * @return The constant quality instance for the type, or the default if not found.
 	 */
 	public static DownscaleQuality forString(String type, DownscaleQuality dflt) {
+		DownscaleQuality q = (DownscaleQuality) constList.get(type);
 
-        DownscaleQuality q = (DownscaleQuality) constList.get(type);
-        return q == null ? dflt : q;
-    }
+		return q == null ? dflt : q;
+	}
 }

@@ -19,17 +19,10 @@
  */
 package org.xhtmlrenderer.util;
 
-/**
- * <p>数组处理类</p>
- * <p/>
- * <p>cloneOrEmpty方法：处理或为空的数组的复制，以避免出现NullPointerException</p>
- */
 public class ArrayUtil {
-
     public static String[] cloneOrEmpty(String[] source){
         return source == null ? Constants.EMPTY_STR_ARR : (String[]) source.clone();
     }
-
     public static byte[] cloneOrEmpty(byte[] source){
         return source == null ? Constants.EMPTY_BYTE_ARR : (byte[]) source.clone();
     }

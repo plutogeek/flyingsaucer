@@ -19,20 +19,8 @@
  */
 package org.xhtmlrenderer.util;
 
-/**
- * <Title>常量类 </Title>
- */
 public class Constants {
-    /**
-     * 空字符串数组
-     */
     public static final String[] EMPTY_STR_ARR = new String[]{};
-    /**
-     * 空字符数组
-     */
     public static final byte[] EMPTY_BYTE_ARR = new byte[]{};
-    /**
-     * 空整数数组
-     */
     public static final int[] EMPTY_INT_ARR = new int[]{};
 }

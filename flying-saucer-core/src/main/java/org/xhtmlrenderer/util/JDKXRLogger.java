@@ -21,22 +21,28 @@
  */
 package org.xhtmlrenderer.util;
 
-
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
-import java.util.*;
-import java.util.logging.Formatter;
-import java.util.logging.Handler;
 import java.util.logging.Level;
+import java.util.logging.LogManager;
 import java.util.logging.Logger;
+import java.util.logging.Handler;
+import java.util.logging.Formatter;
+import java.util.Properties;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Enumeration;
+import java.util.Map;
+import java.util.HashMap;
+import java.util.ArrayList;
 
 /**
  * An {@link XRLogger} interface that uses <code>java.util.logging</code>.
  */
 public class JDKXRLogger implements XRLogger {
-    /**
-     * 初始化
-     */
     private static boolean initPending = true;
     
     /** {@inheritdoc} */
@@ -117,7 +123,6 @@ public class JDKXRLogger implements XRLogger {
     }
 
     private static void initializeJDKLogManager(final Properties fsLoggingProperties) throws IOException {
-
         final List loggers = retrieveLoggers();
 
         configureLoggerHandlerForwarding(fsLoggingProperties, loggers);
@@ -149,17 +154,12 @@ public class JDKXRLogger implements XRLogger {
     }
 
     private static void configureLoggerHandlerForwarding(Properties fsLoggingProperties, List loggers) {
-
         String val = fsLoggingProperties.getProperty("use-parent-handler");
 
         boolean flag = val == null ? false : Boolean.valueOf(val).booleanValue();
-
         for (Iterator it = loggers.iterator(); it.hasNext();) {
-
             Logger logger = (Logger) it.next();
-
             logger.setUseParentHandlers(flag);
-
         }
     }
 
@@ -183,8 +183,7 @@ public class JDKXRLogger implements XRLogger {
         }
     }
 
-    /** 返回Flying Saucer应用的所有Logger实例，JDK LogManager管理这些实例。如果这些实例没有创建，将被自动创建。
-     *
+    /**
      * Returns a List of all Logger instances used by Flying Saucer from the JDK LogManager; these will
      * be automatically created if they aren't already available.
      */
@@ -216,7 +215,6 @@ public class JDKXRLogger implements XRLogger {
             final String name = names[i];
             try {
                 Class handlerClass = Class.forName(name);
-                //处理log日志输出
                 Handler handler = (Handler) handlerClass.newInstance();
                 handlers.put(name, handler);
                 String hl = Configuration.valueFor("xr.util-logging." + name + ".level", "INFO");

@@ -24,24 +24,24 @@ import java.io.StringWriter;
 
 
 /**
- * 打印日志
+ * Description of the Class
  *
  * @author empty
  */
-public class UPrint extends PrintUtil {
+public class Uu extends Util {
     /**
      * Description of the Field
      */
-    private static PrintUtil printUtil;
+    private static Util util;
     /**
      * Description of the Field
      */
-    private static PrintUtil printUtilAsString;
+    private static Util utilAsString;
 
     /**
      * Constructor for the Uu object
      */
-    private UPrint() {
+    private Uu() {
         super(System.out);
     }
 
@@ -50,7 +50,7 @@ public class UPrint extends PrintUtil {
      */
     public static void on() {
         init();
-        printUtil.setOn(true);
+        util.setOn(true);
     }
 
     /**
@@ -58,11 +58,11 @@ public class UPrint extends PrintUtil {
      */
     public static void off() {
         init();
-        printUtil.setOn(false);
+        util.setOn(false);
     }
 
     /**
-     *打印日志
+     * Description of the Method
      *
      * @param object PARAM
      */
@@ -70,8 +70,8 @@ public class UPrint extends PrintUtil {
         init();
         StringWriter sw = new StringWriter();
         PrintWriter pw = new PrintWriter(sw);
-        printUtilAsString.setPrintWriter(pw);
-        printUtilAsString.print(object);// our log adds a newline
+        utilAsString.setPrintWriter(pw);
+        utilAsString.print(object);// our log adds a newline
         pw.flush();
         if (XRLog.isLoggingEnabled()) {
             XRLog.general(sw.getBuffer().toString());
@@ -87,8 +87,8 @@ public class UPrint extends PrintUtil {
         init();
         StringWriter sw = new StringWriter();
         PrintWriter pw = new PrintWriter(sw);
-        printUtilAsString.setPrintWriter(pw);
-        printUtilAsString.print(object);// our log adds a newline
+        utilAsString.setPrintWriter(pw);
+        utilAsString.print(object);// our log adds a newline
         pw.flush();
         if (XRLog.isLoggingEnabled()) {
             XRLog.general(sw.getBuffer().toString());
@@ -119,7 +119,7 @@ public class UPrint extends PrintUtil {
      */
     public static void main(String args[]) {
         try {
-            UPrint.p(new Object());
+            Uu.p(new Object());
         } catch (Exception ex) {
             ex.printStackTrace();
         }
@@ -129,11 +129,11 @@ public class UPrint extends PrintUtil {
      * Description of the Method
      */
     private static void init() {
-        if (printUtil == null) {
-            printUtil = new PrintUtil(System.out);
+        if (util == null) {
+            util = new Util(System.out);
         }
-        if (printUtilAsString == null) {
-            printUtilAsString = new PrintUtil(System.out);
+        if (utilAsString == null) {
+            utilAsString = new Util(System.out);
         }
     }// end main()
 }

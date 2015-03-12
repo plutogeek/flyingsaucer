@@ -19,16 +19,16 @@
  */
 package org.xhtmlrenderer.css.constants;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.xhtmlrenderer.css.parser.FSColor;
 import org.xhtmlrenderer.css.style.CssContext;
 import org.xhtmlrenderer.css.style.FSDerivedValue;
 import org.xhtmlrenderer.util.XRRuntimeException;
 
-import java.util.HashMap;
-import java.util.Map;
 
-
-/**定义一系列Css属性的枚举值 ,Xhmtl中Css属性的值可以通过CssName.
+/**
  * An IdentValue represents a string that you can assign to a CSS property,
  * where the string is one of several enumerated values. For example,
  * "whitespace" can take the values "nowrap", "pre" and "normal". There is a

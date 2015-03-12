@@ -28,7 +28,6 @@ package org.xhtmlrenderer.util;
  * @author   Patrick Wright
  */
 public class XRRuntimeException extends RuntimeException {
-
     private static final long serialVersionUID = 1L;
 
     /**

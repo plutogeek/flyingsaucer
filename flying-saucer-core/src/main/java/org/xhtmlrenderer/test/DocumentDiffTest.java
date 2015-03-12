@@ -19,28 +19,27 @@
  */
 package org.xhtmlrenderer.test;
 
-import org.w3c.dom.Document;
-import org.xhtmlrenderer.render.Box;
-import org.xhtmlrenderer.simple.Graphics2DRenderer;
-import org.xhtmlrenderer.util.UPrint;
-import org.xhtmlrenderer.util.XMLUtil;
-import org.xhtmlrenderer.util.XRLog;
-
-import java.awt.*;
+import java.awt.Dimension;
+import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.logging.Level;
 
+import org.w3c.dom.Document;
+import org.xhtmlrenderer.render.Box;
+import org.xhtmlrenderer.simple.Graphics2DRenderer;
+import org.xhtmlrenderer.util.Uu;
+import org.xhtmlrenderer.util.XMLUtil;
+import org.xhtmlrenderer.util.XRLog;
+
 /**
- * 文档测试类
+ * Description of the Class
  *
  * @author empty
  */
 public class DocumentDiffTest {
-
     public static final int width = 500;
-
     public static final int height = 500;
 
     /**
@@ -97,7 +96,7 @@ public class DocumentDiffTest {
                 String difffile = testfile.substring(0, testfile.length() - 6) + ".diff";
                 //Uu.p("test file = " + testfile);
                 generateTestFile(testfile, difffile, width, height);
-                UPrint.p("generated = " + difffile);
+                Uu.p("generated = " + difffile);
             }
         }
 
@@ -114,10 +113,10 @@ public class DocumentDiffTest {
      */
     public static void generateTestFile(String test, String diff, int width, int height)
             throws Exception {
-        UPrint.p("test = " + test);
+        Uu.p("test = " + test);
         String out = xhtmlToDiff(test, width, height);
         //Uu.p("diff = \n" + out);
-        UPrint.string_to_file(out, new File(diff));
+        Uu.string_to_file(out, new File(diff));
     }
 
     /**
@@ -162,7 +161,7 @@ public class DocumentDiffTest {
         String tin = xhtmlToDiff(test, width, height);
         String din = null;
         try {
-            din = UPrint.file_to_string(diff);
+            din = Uu.file_to_string(diff);
         } catch (FileNotFoundException ex) {
             XRLog.log("unittests", Level.WARNING, "diff file missing");
             return false;
@@ -176,8 +175,8 @@ public class DocumentDiffTest {
         File dfile = new File("correct.diff");
         File tfile = new File("test.diff");
         XRLog.log("unittests", Level.WARNING, "writing to " + dfile + " and " + tfile);
-        UPrint.string_to_file(tin, tfile);
-        UPrint.string_to_file(din, dfile);
+        Uu.string_to_file(tin, tfile);
+        Uu.string_to_file(din, dfile);
         //System.exit(-1);
         return false;
     }

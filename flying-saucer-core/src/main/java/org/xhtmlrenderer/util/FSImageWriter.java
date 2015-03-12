@@ -28,8 +28,7 @@ import java.awt.image.BufferedImage;
 import java.io.*;
 import java.util.Iterator;
 
-/**   图片生成工具,你能够自定义图像格式
- * 默认图片格式是png
+/**
  * <p>Writes out BufferedImages to some outputstream, like a file. Allows image writer parameters to be specified and
  * thus controlled. Uses the java ImageIO libraries--see {@link javax.imageio.ImageIO} and related classes,
  * especially {@link javax.imageio.ImageWriter}.</p>
@@ -55,25 +54,10 @@ import java.util.Iterator;
  * output quality. Note that for the JPG format, your image or BufferedImage shouldn't be ARGB.</p>
  */
 public class FSImageWriter {
-    /**
-     * 图片格式
-     */
     private String imageFormat;
-    /**
-     * 写压缩的质量
-     */
     private float writeCompressionQuality;
-    /**
-     * 写压缩模式
-     */
     private int writeCompressionMode;
-    /**
-     * 写压缩类型
-     */
     private String writeCompressionType;
-    /**
-     * 默认图片格式是png
-     */
     public static final String DEFAULT_IMAGE_FORMAT = "png";
 
 
@@ -242,7 +226,7 @@ public class FSImageWriter {
         this.writeCompressionType = type;
     }
 
-    /**使用了java提供的图像封装类ImageIO
+    /**
      * Utility method to find an imagewriter.
      *
      * @param imageFormat String informal format name, "jpg"

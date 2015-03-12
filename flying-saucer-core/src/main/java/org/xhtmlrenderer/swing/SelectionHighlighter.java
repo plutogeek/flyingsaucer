@@ -19,6 +19,31 @@
  */
 package org.xhtmlrenderer.swing;
 
+import java.awt.*;
+import java.awt.datatransfer.Clipboard;
+import java.awt.datatransfer.StringSelection;
+import java.awt.event.ActionEvent;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.awt.event.MouseMotionListener;
+import java.text.CharacterIterator;
+import java.text.StringCharacterIterator;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Stack;
+import java.util.logging.Level;
+
+import javax.swing.AbstractAction;
+import javax.swing.SwingUtilities;
+import javax.swing.TransferHandler;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
+import javax.swing.event.EventListenerList;
+
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
@@ -35,25 +60,8 @@ import org.xhtmlrenderer.render.Box;
 import org.xhtmlrenderer.render.InlineLayoutBox;
 import org.xhtmlrenderer.render.InlineText;
 import org.xhtmlrenderer.simple.XHTMLPanel;
-import org.xhtmlrenderer.util.PrintUtil;
+import org.xhtmlrenderer.util.Util;
 import org.xhtmlrenderer.util.XRLog;
-
-import javax.swing.*;
-import javax.swing.event.ChangeEvent;
-import javax.swing.event.ChangeListener;
-import javax.swing.event.EventListenerList;
-import java.awt.*;
-import java.awt.datatransfer.Clipboard;
-import java.awt.datatransfer.StringSelection;
-import java.awt.event.ActionEvent;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-import java.awt.event.MouseMotionListener;
-import java.text.CharacterIterator;
-import java.text.StringCharacterIterator;
-import java.util.*;
-import java.util.List;
-import java.util.logging.Level;
 
 /**
  * <p>
@@ -442,7 +450,7 @@ public class SelectionHighlighter implements MouseMotionListener, MouseListener 
         }
         String s = normalizeSpaces(hlText.toString());
         getComponent().repaint();
-        lastHighlightedString = PrintUtil.replace(s, PARA_EQUIV, "\n\n");
+        lastHighlightedString = Util.replace(s, PARA_EQUIV, "\n\n");
         // lastModified = modified;
     }
 

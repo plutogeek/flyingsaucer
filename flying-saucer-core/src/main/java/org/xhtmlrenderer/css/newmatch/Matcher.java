@@ -20,6 +20,17 @@
  */
 package org.xhtmlrenderer.css.newmatch;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.TreeMap;
+
 import org.xhtmlrenderer.css.extend.AttributeResolver;
 import org.xhtmlrenderer.css.extend.StylesheetFactory;
 import org.xhtmlrenderer.css.extend.TreeResolver;
@@ -27,10 +38,8 @@ import org.xhtmlrenderer.css.sheet.MediaRule;
 import org.xhtmlrenderer.css.sheet.PageRule;
 import org.xhtmlrenderer.css.sheet.Ruleset;
 import org.xhtmlrenderer.css.sheet.Stylesheet;
-import org.xhtmlrenderer.util.PrintUtil;
 import org.xhtmlrenderer.util.XRLog;
-
-import java.util.*;
+import org.xhtmlrenderer.util.Util;
 
 
 /**
@@ -282,7 +291,7 @@ public class Matcher {
             }
             
             String style = _attRes.getElementStyling(e);
-            if (PrintUtil.isNullOrEmpty(style)) {
+            if (Util.isNullOrEmpty(style)) {
                 return null;
             }
             
@@ -296,7 +305,7 @@ public class Matcher {
                 return null;
             }
             String style = _attRes.getNonCssStyling(e);
-            if (PrintUtil.isNullOrEmpty(style)) {
+            if (Util.isNullOrEmpty(style)) {
                 return null;
             }
             return _styleFactory.parseStyleDeclaration(org.xhtmlrenderer.css.sheet.StylesheetInfo.AUTHOR, style);
