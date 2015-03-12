@@ -19,17 +19,16 @@
  */
 package org.xhtmlrenderer.pdf;
 
-import java.awt.Point;
-
+import com.itextpdf.text.pdf.PdfTemplate;
 import org.w3c.dom.Element;
 import org.xhtmlrenderer.css.parser.FSCMYKColor;
 import org.xhtmlrenderer.css.parser.FSColor;
 import org.xhtmlrenderer.css.parser.FSRGBColor;
 import org.xhtmlrenderer.layout.LayoutContext;
 import org.xhtmlrenderer.render.BlockBox;
-import org.xhtmlrenderer.util.*;
+import org.xhtmlrenderer.util.PrintUtil;
 
-import com.itextpdf.text.pdf.PdfTemplate;
+import java.awt.*;
 
 
 public abstract class AbstractFormField implements ITextReplacedElement {
@@ -84,7 +83,7 @@ public abstract class AbstractFormField implements ITextReplacedElement {
         if (_fieldName == null) {
             String result = e.getAttribute("name");
 
-            if (Util.isNullOrEmpty(result)) {
+            if (PrintUtil.isNullOrEmpty(result)) {
                 _fieldName = getFieldType()
                         + outputDevice.getNextFormFieldIndex();
             } else {
@@ -98,7 +97,7 @@ public abstract class AbstractFormField implements ITextReplacedElement {
     protected String getValue(Element e) {
         String result = e.getAttribute("value");
 
-        if (Util.isNullOrEmpty(result)) {
+        if (PrintUtil.isNullOrEmpty(result)) {
             return DEFAULT_CHECKED_STATE;
         } else {
             return result;
@@ -106,15 +105,15 @@ public abstract class AbstractFormField implements ITextReplacedElement {
     }
 
     protected boolean isChecked(Element e) {
-        return !Util.isNullOrEmpty(e.getAttribute("checked"));
+        return !PrintUtil.isNullOrEmpty(e.getAttribute("checked"));
     }
 
     protected boolean isReadOnly(Element e) {
-        return !Util.isNullOrEmpty(e.getAttribute("readonly"));
+        return !PrintUtil.isNullOrEmpty(e.getAttribute("readonly"));
     }
     
     protected boolean isSelected(Element e) {
-        return Util.isNullOrEmpty(e.getAttribute("selected"));
+        return PrintUtil.isNullOrEmpty(e.getAttribute("selected"));
     }
 
     public void detach(LayoutContext c) {

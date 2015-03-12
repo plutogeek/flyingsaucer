@@ -1,10 +1,8 @@
 package org.xhtmlrenderer.simple;
 
-import org.xhtmlrenderer.extend.TextRenderer;
-import org.xhtmlrenderer.util.Uu;
+import org.xhtmlrenderer.util.UPrint;
 
-import java.awt.Graphics;
-import java.awt.Graphics2D;
+import java.awt.*;
 import java.awt.print.PageFormat;
 import java.awt.print.Printable;
 
@@ -79,7 +77,7 @@ public class XHTMLPrintable implements Printable {
             
             return Printable.PAGE_EXISTS;
         } catch (Exception ex) {
-            Uu.p(ex);
+            UPrint.p(ex);
             return Printable.NO_SUCH_PAGE;
         }
     }

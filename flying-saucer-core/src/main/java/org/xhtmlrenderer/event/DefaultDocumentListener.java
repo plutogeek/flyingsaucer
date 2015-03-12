@@ -19,7 +19,7 @@
  */
 package org.xhtmlrenderer.event;
 
-/**
+/** 默认的事件监听器，没有具体参数
  * Default, do-nothing implementation of a {@link DocumentListener}; implements all methods in {@link DocumentListener}
  * but the methods do nothing. Subclass this class and override whichever methods you need to trap.
  */

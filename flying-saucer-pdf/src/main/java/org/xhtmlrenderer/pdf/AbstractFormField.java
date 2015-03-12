@@ -83,7 +83,7 @@ public abstract class AbstractFormField implements ITextReplacedElement {
         if (_fieldName == null) {
             String result = e.getAttribute("name");
 
-            if (Util.isNullOrEmpty(result)) {
+            if (PrintUtil.isNullOrEmpty(result)) {
                 _fieldName = getFieldType()
                         + outputDevice.getNextFormFieldIndex();
             } else {
@@ -97,7 +97,7 @@ public abstract class AbstractFormField implements ITextReplacedElement {
     protected String getValue(Element e) {
         String result = e.getAttribute("value");
 
-        if (Util.isNullOrEmpty(result)) {
+        if (PrintUtil.isNullOrEmpty(result)) {
             return DEFAULT_CHECKED_STATE;
         } else {
             return result;
@@ -105,15 +105,15 @@ public abstract class AbstractFormField implements ITextReplacedElement {
     }
 
     protected boolean isChecked(Element e) {
-        return !Util.isNullOrEmpty(e.getAttribute("checked"));
+        return !PrintUtil.isNullOrEmpty(e.getAttribute("checked"));
     }
 
     protected boolean isReadOnly(Element e) {
-        return !Util.isNullOrEmpty(e.getAttribute("readonly"));
+        return !PrintUtil.isNullOrEmpty(e.getAttribute("readonly"));
     }
     
     protected boolean isSelected(Element e) {
-        return Util.isNullOrEmpty(e.getAttribute("selected"));
+        return PrintUtil.isNullOrEmpty(e.getAttribute("selected"));
     }
 
     public void detach(LayoutContext c) {

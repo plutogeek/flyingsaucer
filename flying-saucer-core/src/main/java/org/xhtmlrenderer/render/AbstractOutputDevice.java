@@ -19,11 +19,6 @@
  */
 package org.xhtmlrenderer.render;
 
-import java.awt.Rectangle;
-import java.awt.Shape;
-import java.util.Iterator;
-import java.util.List;
-
 import org.w3c.dom.css.CSSPrimitiveValue;
 import org.xhtmlrenderer.css.constants.CSSName;
 import org.xhtmlrenderer.css.constants.IdentValue;
@@ -40,7 +35,11 @@ import org.xhtmlrenderer.css.value.FontSpecification;
 import org.xhtmlrenderer.extend.FSImage;
 import org.xhtmlrenderer.extend.OutputDevice;
 import org.xhtmlrenderer.util.Configuration;
-import org.xhtmlrenderer.util.Uu;
+import org.xhtmlrenderer.util.UPrint;
+
+import java.awt.*;
+import java.util.Iterator;
+import java.util.List;
 
 /**
  * An abstract implementation of an {@link OutputDevice}.  It provides complete
@@ -176,7 +175,7 @@ public abstract class AbstractOutputDevice implements OutputDevice {
                 return c.getUac().getImageResource(uri).getImage();
             } catch (Exception ex) {
                 ex.printStackTrace();
-                Uu.p(ex);
+                UPrint.p(ex);
             }
         }
         return null;

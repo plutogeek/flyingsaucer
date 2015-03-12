@@ -22,11 +22,34 @@ package org.xhtmlrenderer.util;
 import java.util.logging.Level;
 
 /**
+ * 项目日志类
  * An interface whose implementations log Flying Saucer log messages.
  */
 public interface XRLogger {
+    /**
+     * 记录日志
+     *
+     * @param where
+     * @param level
+     * @param msg
+     */
     public void log(String where, Level level, String msg);
+
+    /**
+     * 记录日志
+     *
+     * @param where
+     * @param level
+     * @param msg
+     * @param th
+     */
     public void log(String where, Level level, String msg, Throwable th);
-    
+
+    /**
+     * 设置日志级别
+     *
+     * @param logger
+     * @param level
+     */
     public void setLevel(String logger, Level level);
 }

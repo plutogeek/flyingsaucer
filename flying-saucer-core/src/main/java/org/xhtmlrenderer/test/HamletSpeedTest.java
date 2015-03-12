@@ -1,7 +1,7 @@
 package org.xhtmlrenderer.test;
 
 import org.xhtmlrenderer.simple.Graphics2DRenderer;
-import org.xhtmlrenderer.util.Uu;
+import org.xhtmlrenderer.util.UPrint;
 
 import java.io.File;
 import java.util.Date;
@@ -17,10 +17,10 @@ public class HamletSpeedTest {
                     700, 700);
             Date end = new Date();
             long diff = (end.getTime() - start.getTime());
-            Uu.p("ms = " + diff);
+            UPrint.p("ms = " + diff);
             total += diff;
         }
         long avg = total / 10;
-        Uu.p("average : " + avg);
+        UPrint.p("average : " + avg);
     }
 }

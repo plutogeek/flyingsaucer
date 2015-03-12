@@ -26,6 +26,7 @@ import java.util.logging.Level;
 
 
 /**
+ * 为不同的package设置了不同的日志级别，依赖于配置文件
  * Utility class for using the java.util.logging package. Relies on the standard
  * configuration for logging, but gives easier access to the various logs
  * (plumbing.load, .init, .render)
@@ -53,6 +54,9 @@ public class XRLog {
     }
 
     private static boolean initPending = true;
+    /**
+     * logger实例
+     */
     private static XRLogger loggerImpl;
 
     private static boolean loggingEnabled = true;

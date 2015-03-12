@@ -24,24 +24,24 @@ import java.io.StringWriter;
 
 
 /**
- * Description of the Class
+ * 打印日志
  *
  * @author empty
  */
-public class Uu extends Util {
+public class UPrint extends PrintUtil {
     /**
      * Description of the Field
      */
-    private static Util util;
+    private static PrintUtil printUtil;
     /**
      * Description of the Field
      */
-    private static Util utilAsString;
+    private static PrintUtil printUtilAsString;
 
     /**
      * Constructor for the Uu object
      */
-    private Uu() {
+    private UPrint() {
         super(System.out);
     }
 
@@ -50,7 +50,7 @@ public class Uu extends Util {
      */
     public static void on() {
         init();
-        util.setOn(true);
+        printUtil.setOn(true);
     }
 
     /**
@@ -58,11 +58,11 @@ public class Uu extends Util {
      */
     public static void off() {
         init();
-        util.setOn(false);
+        printUtil.setOn(false);
     }
 
     /**
-     * Description of the Method
+     *打印日志
      *
      * @param object PARAM
      */
@@ -70,8 +70,8 @@ public class Uu extends Util {
         init();
         StringWriter sw = new StringWriter();
         PrintWriter pw = new PrintWriter(sw);
-        utilAsString.setPrintWriter(pw);
-        utilAsString.print(object);// our log adds a newline
+        printUtilAsString.setPrintWriter(pw);
+        printUtilAsString.print(object);// our log adds a newline
         pw.flush();
         if (XRLog.isLoggingEnabled()) {
             XRLog.general(sw.getBuffer().toString());
@@ -87,8 +87,8 @@ public class Uu extends Util {
         init();
         StringWriter sw = new StringWriter();
         PrintWriter pw = new PrintWriter(sw);
-        utilAsString.setPrintWriter(pw);
-        utilAsString.print(object);// our log adds a newline
+        printUtilAsString.setPrintWriter(pw);
+        printUtilAsString.print(object);// our log adds a newline
         pw.flush();
         if (XRLog.isLoggingEnabled()) {
             XRLog.general(sw.getBuffer().toString());
@@ -119,7 +119,7 @@ public class Uu extends Util {
      */
     public static void main(String args[]) {
         try {
-            Uu.p(new Object());
+            UPrint.p(new Object());
         } catch (Exception ex) {
             ex.printStackTrace();
         }
@@ -129,11 +129,11 @@ public class Uu extends Util {
      * Description of the Method
      */
     private static void init() {
-        if (util == null) {
-            util = new Util(System.out);
+        if (printUtil == null) {
+            printUtil = new PrintUtil(System.out);
         }
-        if (utilAsString == null) {
-            utilAsString = new Util(System.out);
+        if (printUtilAsString == null) {
+            printUtilAsString = new PrintUtil(System.out);
         }
     }// end main()
 }

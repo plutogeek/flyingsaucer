@@ -19,7 +19,7 @@
  */
 package org.xhtmlrenderer.util;
 
-/**
+/**获取系统参数配置类
  * Utility methods for working with System properties.
  */
 public class SystemPropertiesUtil {

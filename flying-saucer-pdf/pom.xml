@@ -17,11 +17,11 @@
   <description>Flying Saucer is a CSS 2.1 renderer written in Java.  This artifact supports PDF output.</description>
 
   <dependencies>
-    <dependency>
-      <groupId>com.lowagie</groupId>
-      <artifactId>itext</artifactId>
-      <version>2.1.7</version>
-    </dependency>
+      <dependency>
+          <groupId>com.lowagie</groupId>
+          <artifactId>itext</artifactId>
+          <version>2.1.7</version>
+      </dependency>
     <dependency>
       <groupId>org.xhtmlrenderer</groupId>
       <artifactId>flying-saucer-core</artifactId>

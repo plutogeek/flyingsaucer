@@ -19,26 +19,17 @@
  */
 package org.xhtmlrenderer.swt;
 
-import java.awt.Dimension;
-import java.awt.Shape;
-import java.awt.geom.Area;
-import java.io.BufferedReader;
-import java.io.InputStream;
-import java.io.StringReader;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Set;
-import java.util.logging.Level;
-
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.*;
 import org.eclipse.swt.graphics.Color;
-import org.eclipse.swt.graphics.GC;
+import org.eclipse.swt.graphics.*;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.graphics.Point;
 import org.eclipse.swt.graphics.Rectangle;
+import org.eclipse.swt.widgets.Canvas;
+import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.*;
+import org.eclipse.swt.widgets.Event;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.xhtmlrenderer.css.style.CalculatedStyle;
@@ -49,17 +40,25 @@ import org.xhtmlrenderer.layout.BoxBuilder;
 import org.xhtmlrenderer.layout.Layer;
 import org.xhtmlrenderer.layout.LayoutContext;
 import org.xhtmlrenderer.layout.SharedContext;
-import org.xhtmlrenderer.render.BlockBox;
-import org.xhtmlrenderer.render.Box;
-import org.xhtmlrenderer.render.PageBox;
-import org.xhtmlrenderer.render.RenderingContext;
-import org.xhtmlrenderer.render.ViewportBox;
+import org.xhtmlrenderer.render.*;
 import org.xhtmlrenderer.resource.XMLResource;
 import org.xhtmlrenderer.simple.NoNamespaceHandler;
 import org.xhtmlrenderer.util.Configuration;
-import org.xhtmlrenderer.util.Uu;
+import org.xhtmlrenderer.util.UPrint;
 import org.xhtmlrenderer.util.XRLog;
 import org.xml.sax.InputSource;
+
+import java.awt.*;
+import java.awt.geom.Area;
+import java.io.BufferedReader;
+import java.io.InputStream;
+import java.io.StringReader;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Set;
+import java.util.logging.Level;
+import java.util.List;
 
 /**
  * Renders XML+CSS using SWT in a widget (a Composite). Scrollbars are handled
@@ -669,7 +668,7 @@ public class BasicRenderer extends Canvas implements PaintListener, UserInterfac
             }
             long after = System.currentTimeMillis();
             if (Configuration.isTrue("xr.incremental.repaint.print-timing", false)) {
-                Uu.p("repaint took ms: " + (after - start));
+                UPrint.p("repaint took ms: " + (after - start));
             }
         } catch (Throwable e) {
             XRLog.exception(e.getMessage(), e);

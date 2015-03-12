@@ -4,10 +4,15 @@ import java.io.*;
 import java.net.URL;
 import java.net.URLConnection;
 
-/**
+/**输入输出工具
  * @author patrick
  */
 public class IOUtil {
+
+    /**
+     * 复制文件
+     */
+
     public static File copyFile(File page, File outputDir) throws IOException {
         InputStream in = null;
         OutputStream out = null;
@@ -45,6 +50,13 @@ public class IOUtil {
         }
     }
 
+    /**
+     * 删除所有文件
+     *
+     * @param dir
+     *
+     * @throws IOException
+     */
     public static void deleteAllFiles(final File dir) throws IOException {
         File[] files = dir.listFiles();
         for (int i = 0; i < files.length; i++) {
@@ -55,12 +67,26 @@ public class IOUtil {
         }
     }
 
-    /**
+    /**   尝试打开url链接
      * Attempts to open a connection, and a stream, to the URI provided. timeouts will be set for opening the connection
      * and reading from it. will return the stream, or null if unable to open or read or a timeout occurred. Does not
      * buffer the stream.
      */
+
     public static InputStream openStreamAtUrl(String uri) {
+
+        return openStreamAtUrl(uri, 10 * 1000, 30 * 1000);
+
+    }
+
+    /**
+     * 尝试打开url链接
+     * Attempts to open a connection, and a stream, to the URI provided. timeouts will be set for opening the connection
+     * and reading from it. will return the stream, or null if unable to open or read or a timeout occurred. Does not
+     * buffer the stream.
+     */
+
+    public static InputStream openStreamAtUrl(String uri, int connectTimeout, int readTimeout) {
         InputStream is = null;
         try {
             final URLConnection uc = new URL(uri).openConnection();
@@ -75,8 +101,8 @@ public class IOUtil {
             // Since we target 1.4, we use a couple of system properties--note these are only supported
             // in the Sun JDK implementation--see the Net properties guide in the JDK
             // e.g. file:///usr/java/j2sdk1.4.2_17/docs/guide/net/properties.html
-            System.setProperty("sun.net.client.defaultConnectTimeout", String.valueOf(10 * 1000));
-            System.setProperty("sun.net.client.defaultReadTimeout", String.valueOf(30 * 1000));
+            System.setProperty("sun.net.client.defaultConnectTimeout", String.valueOf(connectTimeout));
+            System.setProperty("sun.net.client.defaultReadTimeout", String.valueOf(readTimeout));
 
             uc.connect();
 
@@ -90,6 +116,5 @@ public class IOUtil {
         }
 
         return is;
-
     }
 }

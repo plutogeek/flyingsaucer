@@ -20,10 +20,11 @@
  */
 package org.xhtmlrenderer.util;
 
-import java.util.logging.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 
-/**
+/**日志工具类
  * Utility class for working with java.logging Logger classes
  *
  * @author   Patrick Wright
@@ -36,11 +37,20 @@ public class LoggerUtil {
      * @return     The debugLogger value
      */
     public static Logger getDebugLogger( Class cls ) {
-        Logger l = Logger.getLogger( cls.getName() );
-        l.setLevel( Level.ALL );
-        return l;
+        Logger logger = Logger.getLogger(cls.getName());
+        //级别最低的log水平
+        logger.setLevel(Level.ALL);
+        return logger;
     }
 
+    /**
+     * 处理日志级别
+     *
+     * @param val
+     * @param defaultLogLevel
+     *
+     * @return The logger level by parsed value
+     */
     public static Level parseLogLevel(String val, Level defaultLogLevel) {
         if ("ALL".equals(val)) {
             return Level.ALL;

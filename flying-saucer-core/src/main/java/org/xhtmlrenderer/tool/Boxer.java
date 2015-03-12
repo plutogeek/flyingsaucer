@@ -5,11 +5,14 @@ import org.xhtmlrenderer.test.DocumentDiffTest;
 
 import java.io.File;
 
-/**
- * New class
+/**测试这个文件或目录是否存在
+ *工具类
  */
 public class Boxer {
 
+    /**
+     * @param filen 文件名
+     */
     private void run(String filen) {
         try {
             File file = new File(filen);
@@ -26,11 +29,13 @@ public class Boxer {
     public static void main(String args[]) {
         try {
             if (args.length == 0) {
+
                 throw new IllegalArgumentException("Give a file name");
             }
             new Boxer().run(args[0]);
 
         } catch (IllegalArgumentException e) {
+
             System.err.println(e.getMessage());
         }
     }
