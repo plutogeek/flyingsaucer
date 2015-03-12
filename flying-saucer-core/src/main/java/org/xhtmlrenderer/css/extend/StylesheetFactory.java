@@ -22,6 +22,7 @@ package org.xhtmlrenderer.css.extend;
 import org.xhtmlrenderer.css.sheet.Ruleset;
 import org.xhtmlrenderer.css.sheet.Stylesheet;
 import org.xhtmlrenderer.css.sheet.StylesheetInfo;
+import org.xhtmlrenderer.extend.UserAgentCallback;
 
 import java.io.Reader;
 
@@ -32,7 +33,7 @@ import java.io.Reader;
  * but timestamp of file is not checked.
  * <p>这个工厂接口用来处理层叠样式表</p>
  *
- * @author Torbjoern Gannholm
+ * @author Torbjoern Gannholm ,pluto
  */
 public interface StylesheetFactory {
     /**
@@ -59,6 +60,37 @@ public interface StylesheetFactory {
      * @return
      */
     public Stylesheet getStylesheet(StylesheetInfo si);
+
+    /**
+     * @param key
+     *
+     * @return
+     */
+    public boolean containsStylesheet(Object key);
+
+    /**
+     *
+     * @param key
+     * @return
+     */
+    public Object removeCachedStylesheet(Object key);
+
+    /**
+     *
+     */
+    public  void flushCachedStylesheets();
+
+    /**
+     *
+     * @param userAgent
+     */
+    public void setUserAgentCallback(UserAgentCallback userAgent);
+
+    /**
+     *
+     * @param b
+     */
+    public void setSupportCMYKColors(boolean b);
 }
 
 /*
