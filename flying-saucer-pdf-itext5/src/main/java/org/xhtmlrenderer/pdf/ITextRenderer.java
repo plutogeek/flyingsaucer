@@ -19,28 +19,8 @@
  */
 package org.xhtmlrenderer.pdf;
 
-import java.awt.Dimension;
-import java.awt.Rectangle;
-import java.awt.Shape;
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.IOException;
-import java.io.OutputStream;
-import java.io.StringReader;
-import java.io.StringWriter;
-import java.io.UnsupportedEncodingException;
-import java.io.Writer;
-import java.util.List;
-import java.util.regex.Pattern;
-
-import javax.xml.transform.OutputKeys;
-import javax.xml.transform.Transformer;
-import javax.xml.transform.TransformerConfigurationException;
-import javax.xml.transform.TransformerException;
-import javax.xml.transform.TransformerFactory;
-import javax.xml.transform.dom.DOMSource;
-import javax.xml.transform.stream.StreamResult;
-
+import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.pdf.PdfWriter;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
@@ -61,8 +41,13 @@ import org.xhtmlrenderer.simple.extend.XhtmlNamespaceHandler;
 import org.xhtmlrenderer.util.Configuration;
 import org.xml.sax.InputSource;
 
-import com.itextpdf.text.DocumentException;
-import com.itextpdf.text.pdf.PdfWriter;
+import javax.xml.transform.*;
+import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.stream.StreamResult;
+import java.awt.*;
+import java.io.*;
+import java.util.List;
+import java.util.regex.Pattern;
 
 public class ITextRenderer {
     // These two defaults combine to produce an effective resolution of 96 px to
@@ -70,7 +55,7 @@ public class ITextRenderer {
     private static final float DEFAULT_DOTS_PER_POINT = 20f * 4f / 3f;
     private static final int DEFAULT_DOTS_PER_PIXEL = 20;
 
-    private final SharedContext _sharedContext;
+    private final SharedContext _sharedContext;      //layout context
     private final ITextOutputDevice _outputDevice;
 
     private Document _doc;
@@ -99,8 +84,9 @@ public class ITextRenderer {
     }
 
     public ITextRenderer(float dotsPerPoint, int dotsPerPixel) {
+        //set dots for every a point in text
         _dotsPerPoint = dotsPerPoint;
-
+        // instance for iText output device
         _outputDevice = new ITextOutputDevice(_dotsPerPoint);
 
         ITextUserAgent userAgent = new ITextUserAgent(_outputDevice);

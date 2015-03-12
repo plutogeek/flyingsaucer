@@ -19,12 +19,6 @@
  */
 package org.xhtmlrenderer.render;
 
-import java.awt.Rectangle;
-import java.awt.Shape;
-import java.awt.geom.Area;
-import java.util.Iterator;
-import java.util.List;
-
 import org.w3c.dom.css.CSSPrimitiveValue;
 import org.xhtmlrenderer.css.constants.CSSName;
 import org.xhtmlrenderer.css.constants.IdentValue;
@@ -43,9 +37,19 @@ import org.xhtmlrenderer.extend.OutputDevice;
 import org.xhtmlrenderer.util.Configuration;
 import org.xhtmlrenderer.util.Uu;
 
+import java.awt.*;
+import java.awt.geom.Area;
+import java.util.Iterator;
+import java.util.List;
+
 /**
  * An abstract implementation of an {@link OutputDevice}.  It provides complete
  * implementations for many <code>OutputDevice</code> methods.
+ *
+ * <p>该抽象类部分实现了OutputDevice接口的方法: </p>
+ * drawText,drawFontMetrics
+ *
+ *
  */
 public abstract class AbstractOutputDevice implements OutputDevice {
 
@@ -57,7 +61,7 @@ public abstract class AbstractOutputDevice implements OutputDevice {
         InlineLayoutBox iB = inlineText.getParent();
         String text = inlineText.getSubstring();
 
-        if (text != null && text.length() > 0) {
+        if (text != null && text.length() > 0) {    //if text is not null
             setColor(iB.getStyle().getColor());
             setFont(iB.getStyle().getFSFont(c));
             setFontSpecification(iB.getStyle().getFontSpecification());

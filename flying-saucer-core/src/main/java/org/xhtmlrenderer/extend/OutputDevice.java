@@ -19,24 +19,26 @@
  */
 package org.xhtmlrenderer.extend;
 
-import java.awt.Rectangle;
-import java.awt.Shape;
-import java.awt.Stroke;
-import java.awt.RenderingHints.Key;
-
 import org.xhtmlrenderer.css.parser.FSColor;
 import org.xhtmlrenderer.css.style.CalculatedStyle;
 import org.xhtmlrenderer.css.style.derived.BorderPropertySet;
-import org.xhtmlrenderer.render.BlockBox;
-import org.xhtmlrenderer.render.Box;
-import org.xhtmlrenderer.render.FSFont;
-import org.xhtmlrenderer.render.InlineLayoutBox;
-import org.xhtmlrenderer.render.InlineText;
-import org.xhtmlrenderer.render.LineBox;
-import org.xhtmlrenderer.render.RenderingContext;
-import org.xhtmlrenderer.render.TextDecoration;
+import org.xhtmlrenderer.render.*;
 
+import java.awt.*;
+import java.awt.RenderingHints.Key;
+
+/**
+ * <title>输出设备接口</title>
+ * defined:some draw actions.
+ * 定义了一些列绘画动作。
+ * @Author pluto
+ */
 public interface OutputDevice {
+    /**
+     *
+     * @param c
+     * @param inlineText
+     */
     public void drawText(RenderingContext c, InlineText inlineText);
     public void drawSelection(RenderingContext c, InlineText inlineText);
     

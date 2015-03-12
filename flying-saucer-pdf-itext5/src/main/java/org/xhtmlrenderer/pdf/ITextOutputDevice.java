@@ -20,7 +20,6 @@
 package org.xhtmlrenderer.pdf;
 
 import java.awt.BasicStroke;
-import java.awt.Color;
 import java.awt.Point;
 import java.awt.Rectangle;
 import java.awt.Shape;
@@ -35,8 +34,6 @@ import java.awt.geom.PathIterator;
 import java.awt.geom.Point2D;
 import java.io.IOException;
 import java.net.URI;
-import java.net.URISyntaxException;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -61,12 +58,10 @@ import org.xhtmlrenderer.css.style.CssContext;
 import org.xhtmlrenderer.css.value.FontSpecification;
 import org.xhtmlrenderer.extend.FSImage;
 import org.xhtmlrenderer.extend.NamespaceHandler;
-import org.xhtmlrenderer.extend.OutputDevice;
 import org.xhtmlrenderer.layout.SharedContext;
 import org.xhtmlrenderer.pdf.ITextFontResolver.FontDescription;
 import org.xhtmlrenderer.render.AbstractOutputDevice;
 import org.xhtmlrenderer.render.BlockBox;
-import org.xhtmlrenderer.render.BorderPainter;
 import org.xhtmlrenderer.render.Box;
 import org.xhtmlrenderer.render.FSFont;
 import org.xhtmlrenderer.render.InlineLayoutBox;
@@ -100,7 +95,7 @@ import com.itextpdf.text.pdf.PdfWriter;
  * See <a href="http://sourceforge.net/projects/itext/">http://sourceforge.net/
  * projects/itext/</a> for license information.
  */
-public class ITextOutputDevice extends AbstractOutputDevice implements OutputDevice {
+public class ITextOutputDevice extends AbstractOutputDevice  {
     private static final int FILL = 1;
     private static final int STROKE = 2;
     private static final int CLIP = 3;
