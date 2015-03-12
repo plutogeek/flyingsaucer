@@ -55,7 +55,7 @@ public class ITextRenderer {
     private static final float DEFAULT_DOTS_PER_POINT = 20f * 4f / 3f;
     private static final int DEFAULT_DOTS_PER_PIXEL = 20;
 
-    private final SharedContext _sharedContext;      //layout context
+    private final SharedContext _sharedContext;      //layout share container
     private final ITextOutputDevice _outputDevice;
 
     private Document _doc;
@@ -84,15 +84,15 @@ public class ITextRenderer {
     }
 
     public ITextRenderer(float dotsPerPoint, int dotsPerPixel) {
-        //set dots for every a point in text
-        _dotsPerPoint = dotsPerPoint;
-        // instance for iText output device
-        _outputDevice = new ITextOutputDevice(_dotsPerPoint);
 
-        ITextUserAgent userAgent = new ITextUserAgent(_outputDevice);
-        _sharedContext = new SharedContext();
-        _sharedContext.setUserAgentCallback(userAgent);
-        _sharedContext.setCss(new StyleReference(userAgent));
+        _dotsPerPoint = dotsPerPoint;  //set dots for every a point in text.
+
+        _outputDevice = new ITextOutputDevice(_dotsPerPoint); // instance for iText output device.
+
+        ITextUserAgent userAgent = new ITextUserAgent(_outputDevice);   //create a agent for output device.
+        _sharedContext = new SharedContext();  //create a contain store all process need to some parameters.
+        _sharedContext.setUserAgentCallback(userAgent);   //set UserAgent for rendering css style sheet. you can think of this as the rendering component for a browser.
+        _sharedContext.setCss(new StyleReference(userAgent)); //set Css
         userAgent.setSharedContext(_sharedContext);
         _outputDevice.setSharedContext(_sharedContext);
 

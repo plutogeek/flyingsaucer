@@ -19,25 +19,46 @@
  */
 package org.xhtmlrenderer.css.extend;
 
-import java.io.Reader;
-
 import org.xhtmlrenderer.css.sheet.Ruleset;
 import org.xhtmlrenderer.css.sheet.Stylesheet;
 import org.xhtmlrenderer.css.sheet.StylesheetInfo;
+
+import java.io.Reader;
 
 
 /**
  * A Factory class for Cascading Style Sheets. Sheets are parsed using a single
  * parser instance for all sheets. Sheets are cached by URI using a LRU test,
  * but timestamp of file is not checked.
+ * <p>这个工厂接口用来处理层叠样式表</p>
  *
  * @author Torbjoern Gannholm
  */
 public interface StylesheetFactory {
-    Stylesheet parse(Reader reader, StylesheetInfo info);
-    Ruleset parseStyleDeclaration(int author, String style);
+    /**
+     * parse cascading style sheets
+     *
+     * @param reader
+     * @param info
+     *
+     * @return
+     */
+    public Stylesheet parse(Reader reader, StylesheetInfo info);
 
-    Stylesheet getStylesheet(StylesheetInfo si);
+    /**
+     *
+     * @param author
+     * @param style
+     * @return
+     */
+    public Ruleset parseStyleDeclaration(int author, String style);
+
+    /**
+     *
+     * @param si
+     * @return
+     */
+    public Stylesheet getStylesheet(StylesheetInfo si);
 }
 
 /*

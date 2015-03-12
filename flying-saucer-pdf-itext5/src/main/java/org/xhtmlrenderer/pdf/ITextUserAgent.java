@@ -20,25 +20,28 @@
  */
 package org.xhtmlrenderer.pdf;
 
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.net.URI;
-import java.net.URL;
-
+import com.itextpdf.text.Image;
+import com.itextpdf.text.Rectangle;
+import com.itextpdf.text.pdf.PdfReader;
 import org.xhtmlrenderer.extend.FSImage;
 import org.xhtmlrenderer.layout.SharedContext;
 import org.xhtmlrenderer.resource.ImageResource;
 import org.xhtmlrenderer.swing.NaiveUserAgent;
+import org.xhtmlrenderer.util.ImageUtil;
 import org.xhtmlrenderer.util.XRLog;
 
-import com.itextpdf.text.Image;
-import com.itextpdf.text.Rectangle;
-import com.itextpdf.text.pdf.PdfReader;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.URI;
 
-import org.xhtmlrenderer.util.ImageUtil;
-
+/**
+ * <title>IText浏览器渲染器</title>
+ * <p>多数情况下，你可以将之理解为浏览器渲染引擎<a href="http://www.w3.org/TR/2011/REC-CSS2-20110607/intro.html">The CSS 2.1 processing model</a></p>
+ * <p>in the cases,you can think of this as the rendering component for a browser</p>
+ */
 public class ITextUserAgent extends NaiveUserAgent {
+
     private static final int IMAGE_CACHE_CAPACITY = 32;
 
     private SharedContext _sharedContext;

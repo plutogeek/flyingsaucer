@@ -32,6 +32,7 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.xhtmlrenderer.css.constants.CSSName;
 import org.xhtmlrenderer.css.extend.AttributeResolver;
+import org.xhtmlrenderer.css.extend.StylesheetFactory;
 import org.xhtmlrenderer.css.extend.lib.DOMTreeResolver;
 import org.xhtmlrenderer.css.newmatch.CascadedStyle;
 import org.xhtmlrenderer.css.newmatch.PageInfo;
@@ -66,9 +67,9 @@ public class StyleReference {
     private Document _doc;
 
     /**
-     * Description of the Field
+     * Css style
      */
-    private StylesheetFactoryImpl _stylesheetFactory;
+    private StylesheetFactory _stylesheetFactory;
 
     /**
      * Instance of our element-styles matching class. Will be null if new rules
